@@ -1,0 +1,1 @@
+var satoshy = angular.module('satoshy', []);
