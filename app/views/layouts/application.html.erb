@@ -7,8 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="satoshy">
+  <div ng-include="'home/navbar.html'"></div>
+  <div ui-view></div>
 
-<%= yield %>
+<%#= yield %>
 
 </body>
 </html>
