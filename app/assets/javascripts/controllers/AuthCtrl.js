@@ -4,17 +4,12 @@ var app = angular.module('satoshy');
   app.controller('AuthCtrl', ['$scope', '$location', 'Auth', function($scope, $location, Auth){
   	//$scope.user = {};
 
-    var config = {
-        headers: {
-          'X-HTTP-Method-Override': 'POST'
-        }
-     };
-
     $scope.current_user = function() {
         if (Auth._currentUser == null ) { return false } else { return true }
     }
 
   	$scope.signIn = function() {
+        var config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
         Auth.login($scope.user, config).then(function(user) {
             console.log(user); // => {id: 1, ect: '...'}
         }, function(error) {
@@ -31,7 +26,7 @@ var app = angular.module('satoshy');
   	}
 
   	$scope.signUp = function() {
-
+        var config = { headers: { 'X-HTTP-Method-Override': 'POST' } }
         Auth.register($scope.user, config).then(function(registeredUser) {
             console.log(registeredUser); // => {id: 1, ect: '...'}
         }, function(error) {
@@ -44,6 +39,7 @@ var app = angular.module('satoshy');
   	}
 
   	$scope.log_out = function() {
+      var config = { headers: { 'X-HTTP-Method-Override': 'DELETE' } }
   		Auth.logout(config).then(function(oldUser) {
             // alert(oldUser.name + "you're signed out now.");
         }, function(error) {
@@ -51,7 +47,7 @@ var app = angular.module('satoshy');
         });
 
         $scope.$on('devise:logout', function(event, oldCurrentUser) {
-            $location.path('/home/index');
+          $location.path('/home/index');
         });
   	}
   }]);

@@ -19,6 +19,7 @@ gem 'angular-rails-templates'
 
 gem 'devise'
 gem 'angular_rails_csrf'
+gem 'sprockets', '2.12.3'
 
 group :development, :test do
   gem 'byebug'
